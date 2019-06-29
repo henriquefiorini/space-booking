@@ -3,7 +3,7 @@ const { RESTDataSource } = require('apollo-datasource-rest');
 class LaunchAPI extends RESTDataSource {
   constructor() {
     super();
-    this.baseURL = process.env.URI_API_SPACEX;
+    this.baseURL = process.env.SPACEX_API_URL;
   }
 
   async getAllLaunches() {

@@ -3,7 +3,7 @@ const { gql } = require('apollo-server');
 const typeDefs = gql`
   extend type Query {
     launch(launchId: ID!): Launch
-    launches(launchIds: [ID!]): [Launch!]!
+    launches(pageSize: Int, after: String): LaunchConnection!
   }
 
   extend type Mutation {
@@ -21,6 +21,12 @@ const typeDefs = gql`
 
   extend type User {
     trips: [Launch!]!
+  }
+
+  type LaunchConnection {
+    cursor: String!
+    hasMore: Boolean!
+    launches: [Launch!]!
   }
 
   type TripUpdateResponse {
