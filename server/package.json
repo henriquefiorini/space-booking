@@ -1,0 +1,16 @@
+{
+  "name": "space-travel-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Henrique Fiorini",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon src/index.js"
+  },
+  "dependencies": {
+    "apollo-server": "^2.6.7",
+    "dotenv": "^8.0.0",
+    "graphql": "^14.4.1",
+    "nodemon": "^1.19.1"
+  }
+}
