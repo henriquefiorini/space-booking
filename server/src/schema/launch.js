@@ -3,7 +3,7 @@ const { gql } = require('apollo-server');
 const typeDefs = gql`
   extend type Query {
     launch(launchId: ID!): Launch
-    launches: [Launch!]!
+    launches(launchIds: [ID!]): [Launch!]!
   }
 
   extend type Mutation {
