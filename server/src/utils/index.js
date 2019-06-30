@@ -1,9 +1,9 @@
 const createStore = require('./createStore');
-const handleAuthorization = require('./handleAuthorization');
+const tokenHandler = require('./tokenHandler');
 const paginateResults = require('./paginateResults');
 
 module.exports = {
   createStore,
-  handleAuthorization,
+  tokenHandler,
   paginateResults,
 };

@@ -19,10 +19,17 @@ function createStore() {
       primaryKey: true,
       autoIncrement: true,
     },
+    email: {
+      type: SQL.STRING,
+      allowNull: false,
+      unique: true,
+    },
+    password: {
+      type: SQL.STRING,
+      allowNull: false,
+    },
     createdAt: SQL.DATE,
     updatedAt: SQL.DATE,
-    email: SQL.STRING,
-    token: SQL.STRING,
   });
 
   const trips = db.define('trip', {
@@ -31,11 +38,13 @@ function createStore() {
       primaryKey: true,
       autoIncrement: true,
     },
-    createdAt: SQL.DATE,
-    updatedAt: SQL.DATE,
     launchId: SQL.INTEGER,
     userId: SQL.INTEGER,
+    createdAt: SQL.DATE,
+    updatedAt: SQL.DATE,
   });
+
+  // db.sync({ force: true });
 
   return { users, trips };
 };

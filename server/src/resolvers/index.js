@@ -5,7 +5,7 @@ const launchResolver = require('./launch');
 
 const resolvers = merge(
   userResolver,
-  launchResolver
+  launchResolver,
 );
 
 module.exports = resolvers;

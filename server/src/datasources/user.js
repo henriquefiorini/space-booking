@@ -11,19 +11,39 @@ class UserAPI extends DataSource {
     this.context = config.context;
   }
 
-  async findOrCreateUser({ email: emailArg } = {}) {
-    const email = this.context && this.context.user
+  async findUser({ email: emailArg } = {}) {
+    const email = !emailArg && this.context && this.context.user
       ? this.context.user.email
       : emailArg;
-    if (!email || isEmail.validate(email)) {
+
+    if (!email || !isEmail.validate(email)) {
       return null;
     }
-    const users = await this.store.users.findOrCreate({
+    const user = await this.store.users.findOne({
       where: { email },
     });
-    return users && users[0]
-      ? users[0]
-      : null;
+    return user || null;
+  }
+
+  async findUserById({ id }) {
+    if (!id) {
+      return null;
+    }
+    const user = await this.store.users.findOne({
+      where: { id },
+    });
+    return user || null;
+  }
+
+  async createUser({ email, password }) {
+    if (!email || !isEmail.validate(email) || !password) {
+      return null;
+    }
+    const user = await this.store.users.create({
+      email,
+      password,
+    });
+    return user || null;
   }
 
   async bookTrips({ launchIds }) {
