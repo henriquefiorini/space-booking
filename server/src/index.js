@@ -19,7 +19,6 @@ const server = new ApolloServer({
       const { user } = tokenHandler.decode(token);
       return { user };
     }
-    throw new Error('Not authenticated');
   },
 });
 
