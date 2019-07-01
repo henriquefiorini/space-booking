@@ -1,6 +1,6 @@
 module.exports = {
   client: {
     name: 'Space Travel',
-    service: process.env.ENGINE_SERVICE_NAME,
+    service: process.env.REACT_APP_ENGINE_SERVICE_NAME,
   },
 };
