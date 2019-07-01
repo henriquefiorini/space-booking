@@ -24,7 +24,7 @@ const resolver = {
         throw new Error('Invalid password');
       }
 
-      const token = tokenHandler.generate({
+      const token = tokenHandler.sign({
         user: {
           id: user.dataValues.id,
           email: user.dataValues.email,
@@ -51,7 +51,7 @@ const resolver = {
         throw Error('Cannot create account');
       }
 
-      const token = tokenHandler.generate({
+      const token = tokenHandler.sign({
         user: {
           id: user.dataValues.id,
           email: user.dataValues.email,
