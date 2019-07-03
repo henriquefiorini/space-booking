@@ -3,6 +3,7 @@ import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 
 import DefaultPicture from '../assets/images/dog.png';
+import { LogoutButton } from '../containers';
 import {
   Page,
   Header,
@@ -45,7 +46,8 @@ function ProfilePage() {
               <Fragment>
                 <Section title="Explorer Information">
                   <Media image={DefaultPicture}>
-                    {data.me.email}
+                    <p>{data.me.email}</p>
+                    <LogoutButton />
                   </Media>
                 </Section>
                 <Section title="Booked Trips">

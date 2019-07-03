@@ -17,7 +17,6 @@ const GET_LAUNCH_DETAILS_QUERY = gql`
       details
       images
       site
-      isBooked
       rocket {
         id
         name
@@ -27,6 +26,7 @@ const GET_LAUNCH_DETAILS_QUERY = gql`
         name
         missionPatch
       }
+      isInCart @client
     }
   }
 `;
