@@ -17,7 +17,9 @@ const server = new ApolloServer({
     if (authorization) {
       const token = authorization.replace('Bearer ','');
       const { user } = tokenHandler.verify(token);
-      return { user };
+      if (user) {
+        return { user };
+      }
     }
   },
 });

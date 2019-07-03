@@ -7,10 +7,10 @@ const Button = styled.button`
   justify-content: center;
   flex-shrink: 0;
 
-  min-width: 36px;
-  height: 36px;
-  padding-right: 16px;
-  padding-left: 16px;
+  min-width: 40px;
+  height: 40px;
+  padding-right: 24px;
+  padding-left: 24px;
   border-radius: 4px;
   background: #592DEA;
   color: #FFF;

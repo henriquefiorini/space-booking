@@ -9,11 +9,30 @@ import { ApolloProvider } from 'react-apollo';
 import GlobalStyle from './styles';
 import App from './App';
 
-const client = new ApolloClient({
-  cache: new InMemoryCache(),
-  link: new HttpLink({
-    uri: process.env.REACT_APP_APOLLO_SERVER_URL,
+import { typeDefs, resolvers } from './resolvers';
+
+const cache = new InMemoryCache();
+const link = new HttpLink({
+  uri: process.env.REACT_APP_APOLLO_SERVER_URL,
+  ...(!!localStorage.getItem('token') && {
+    headers: {
+      authorization: localStorage.getItem('token'),
+    },
   }),
+});
+
+const client = new ApolloClient({
+  cache,
+  link,
+  typeDefs,
+  resolvers,
+});
+
+cache.writeData({
+  data: {
+    isLoggedIn: !!localStorage.getItem('token'),
+    cartItems: [],
+  },
 });
 
 ReactDOM.render(

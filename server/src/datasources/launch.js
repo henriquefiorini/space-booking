@@ -28,6 +28,9 @@ class LaunchAPI extends RESTDataSource {
     return {
       id: launch.flight_number || 0,
       cursor: `${launch.launch_date_unix}`,
+      date: launch.launch_date_utc,
+      details: launch.details,
+      images: launch.links.flickr_images,
       site: launch.launch_site && launch.launch_site.site_name,
       mission: {
         name: launch.mission_name,

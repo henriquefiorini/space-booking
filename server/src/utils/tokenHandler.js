@@ -8,6 +8,7 @@ function sign(args) {
 }
 
 function verify(token) {
+  if (!token) return null;
   const decoded = jwt.verify(token, JWT_SECRET);
   return decoded;
 }

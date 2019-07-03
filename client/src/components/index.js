@@ -1,6 +1,14 @@
+export { default as AuthRoute } from './AuthRoute';
+export { default as Avatar } from './Avatar';
 export { default as Board } from './Board';
 export { default as Button } from './Button';
+export { default as Form } from './Form';
+export { default as Gallery } from './Gallery';
 export { default as Header } from './Header';
+export { default as Input } from './Input';
 export { default as LaunchTile } from './LaunchTile';
+export { default as Media } from './Media';
 export { default as Page } from './Page';
+export { default as PrivateRoute } from './PrivateRoute';
+export { default as Section } from './Section';
 export { default as TopBar } from './TopBar';

@@ -37,7 +37,7 @@ const BoardTile = styled(Link)`
   background-repeat: no-repeat;
   color: #FFF;
   line-height: 20px;
-  padding: 8px;
+  padding: 12px;
   text-decoration: none;
   overflow: hidden;
 

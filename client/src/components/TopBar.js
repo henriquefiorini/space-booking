@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 const StyledTopBar = styled.header`
@@ -34,27 +34,23 @@ const TopBarGroup = styled.nav`
   align-items: center;
 `;
 
-const TopBarLink = styled(Link)`
+const TopBarLink = styled(NavLink)`
   display: flex;
   align-items: center;
   justify-content: center;
   min-width: 24px;
   min-height: 24px;
   border-radius: 4px;
-  color: #8492A6;
-  font-weight: bold;
+  color: #273444;
+  font-weight: 600;
   line-height: 1;
 
   &:hover,
   &:focus,
   &:active {
-    color: #273444;
+    color: #009EEB;
     text-decoration: none;
     outline: none;
-  }
-
-  &.active {
-    color: #1FB6FF;
   }
 
   &:not(:last-child) {
@@ -62,14 +58,36 @@ const TopBarLink = styled(Link)`
   }
 `;
 
-function TopBar({ isAuthenticated }) {
+const TopBarLogo = styled.span`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  min-height: 24px;
+  margin-right: 24px;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1;
+  cursor: default;
+  user-select: none;
+
+  span {
+    margin-right: 8px;
+    font-size: 24px;
+  }
+`;
+
+function TopBar({ isLoggedIn }) {
   return(
     <StyledTopBar>
       <TopBarWrapper>
         <TopBarGroup>
+          <TopBarLogo>
+            <span role="img" aria-label="Space Travel">🛸</span> Space Travel
+          </TopBarLogo>
           <TopBarLink to="/">Home</TopBarLink>
         </TopBarGroup>
-        {isAuthenticated ? (
+        {isLoggedIn ? (
           <TopBarGroup>
             <TopBarLink to="/cart">Cart</TopBarLink>
             <TopBarLink to="/profile">Profile</TopBarLink>

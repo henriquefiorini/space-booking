@@ -11,8 +11,10 @@ const StyledPage = styled.main`
 `;
 
 function Page(props) {
-  return(
-    <StyledPage>{props.children}</StyledPage>
+  return (
+    <StyledPage>
+      {props.children}
+    </StyledPage>
   );
 }
 

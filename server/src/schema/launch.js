@@ -13,6 +13,9 @@ const typeDefs = gql`
 
   type Launch implements Node {
     id: ID!
+    date: String
+    details: String
+    images: [String!]
     site: String
     isBooked: Boolean!
     createdAt: DateTime!

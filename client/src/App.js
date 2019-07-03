@@ -1,7 +1,9 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { Query } from 'react-apollo';
+import gql from 'graphql-tag';
 
-import { TopBar } from './components';
+import { TopBar, AuthRoute, PrivateRoute } from './components';
 
 import {
   LoginPage,
@@ -13,22 +15,33 @@ import {
   NotFoundPage,
 } from './pages';
 
+const IS_LOGGED_IN_QUERY = gql`
+  query IsLoggedIn {
+    isLoggedIn @client
+  }
+`;
+
 function App() {
   return (
-    <Router>
-      <TopBar />
-      <Switch>
-        <Route exact path="/login" component={LoginPage} />
-        <Route exact path="/register" component={RegisterPage} />
+    <Query query={IS_LOGGED_IN_QUERY}>
+      {({ data }) => (
+        <BrowserRouter>
+          <TopBar isLoggedIn={data.isLoggedIn} />
+          <Switch>
+            <Route exact path="/" component={LaunchesPage} />
+            <Route exact path="/launch/:id" component={LaunchDetailsPage} />
 
-        <Route exact path="/" component={LaunchesPage} />
-        <Route exact path="/launch/:id" component={LaunchDetailsPage} />
-        <Route exact path="/cart" component={CartPage} />
-        <Route exact path="/profile" component={ProfilePage} />
+            <AuthRoute exact path="/login" component={LoginPage} isLoggedIn={data.isLoggedIn} />
+            <AuthRoute exact path="/register" component={RegisterPage} isLoggedIn={data.isLoggedIn} />
 
-        <Route component={NotFoundPage} />
-      </Switch>
-    </Router>
+            <PrivateRoute exact path="/cart" component={CartPage} isLoggedIn={data.isLoggedIn} />
+            <PrivateRoute exact path="/profile" component={ProfilePage} isLoggedIn={data.isLoggedIn} />
+
+            <Route component={NotFoundPage} />
+          </Switch>
+        </BrowserRouter>
+      )}
+    </Query>
   );
 }
 
